@@ -1,0 +1,7 @@
+<suite name="App Test Suite">
+    <test name="App Test Case">
+        <classes>
+            <class name="org.example.AppTest"/>
+        </classes>
+    </test>
+</suite>
