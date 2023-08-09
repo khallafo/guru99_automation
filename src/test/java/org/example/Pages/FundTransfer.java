@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Pages;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -18,25 +18,31 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.Keys ;
-public class Deposit {
+public class FundTransfer {
     public WebDriver driver;
+    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[4]/td[2]/input")
+    public WebElement PayersAccount;
+    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[5]/td[2]/input")
+    public WebElement PayeesAccount;
     @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[6]/td[2]/input")
-    public WebElement AccountID;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input")
     public WebElement Amount;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[8]/td[2]/input")
+    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[7]/td[2]/input")
     public WebElement Description;
-    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[12]/td[2]/input[1]")
+    @FindBy(xpath = "/html/body/table/tbody/tr/td/table/tbody/tr[8]/td[2]/input[1]")
     public WebElement Submit;
-
-    public Deposit(WebDriver driver) {
+    public FundTransfer(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void setAccountID(String accountID) {
-        AccountID.click();
-        AccountID.clear();
-        AccountID.sendKeys(accountID);
+    public void setPayersAccount(String accountID) {
+        PayersAccount.click();
+        PayersAccount.clear();
+        PayersAccount.sendKeys(accountID);
+    }
+    public void setPayeesAccount(String accountID) {
+        PayeesAccount.click();
+        PayeesAccount.clear();
+        PayeesAccount.sendKeys(accountID);
     }
     public void setAmount(String amount) {
         Amount.click();
@@ -48,11 +54,11 @@ public class Deposit {
         Description.clear();
         Description.sendKeys(description);
     }
-    public void submit(String accountID,String amount,String description) {
-        setAccountID(accountID);
+    public void submit(String payersAccount,String payeesAccount,String amount,String description) {
+        setPayersAccount(payersAccount);
+        setPayeesAccount(payeesAccount);
         setAmount(amount);
         setDescription(description);
         Submit.click();
     }
-
 }
